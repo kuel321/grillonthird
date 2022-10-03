@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@1,500&display=swap');
+
+body {
+    margin: 0;
+}
+
+
+.navbar-container {
+    height: 70px;
+    background-color: rgba(41,34,28,0.9);
+    width: 100vw;
+    
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+.logo-image {
+    width: 127px;
+    margin-left: 2rem;
+}
+
+.nav-link {
+    font-family: 'Albert Sans', sans-serif;
+    font-size: 20px;
+    color: white;
+}
+
+.nav-link:hover {
+    color: #F27048;
+    cursor: default;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    gap: 35px;
+    margin-right: 2rem;
+    align-items: center;
+}
+
+
+.hero-image {
+    position:relative;
+    z-index: -20;
+    margin-top: -5rem;
+    width: 100vw;
+}
+
+
+.nav-and-hero {
+    height: 100vh;
+}
+
+.hero-title-container {
+    position: absolute;
+    top: 20rem;
+    margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
+text-align: center;
+}
+
+.hero-title {
+    color: white;
+    font-family: 'Albert Sans', sans-serif;
+    font-size: 108px;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    font-weight: 700;
+}
+
+.hero-title-top {
+    font-size: 46px;
+    font-family:  'Albert Sans', sans-serif;
+    color: white;
+    margin-bottom: 0rem;
+}
+
+.hero-title-bottom {
+    font-family: 'Crimson Pro', serif;
+    color: white;
+    font-size: 24px;
+    margin-top: 0;
+}
+
+.order {
+    padding: 10px;
+    background-color: #F27048;
+    border-radius: 10px;
+    margin-right: 1rem;
+}
+
+.order:hover {
+    color: white !important;
+}
+
+.menu-section-container {
+    background-color: rgb(41,34,28);
+    display: flex;
+    justify-content: center;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.menu-title {
+    color: white;
+    font-size: 40px;
+    font-family: 'Albert Sans', sans-serif;
+}
