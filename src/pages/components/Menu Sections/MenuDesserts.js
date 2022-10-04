@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
-
+import { motion } from "framer-motion"
 
 const MenuDesserts = ({ pageTitle, children }) => {
     const data = useStaticQuery(graphql`
@@ -29,7 +29,7 @@ const MenuDesserts = ({ pageTitle, children }) => {
   return (
 
 
-    <div>
+    <motion.div animate={{ x: 50 }}>
       {/* 👇️ iterate object VALUES */}
       {Object.values(data.wpPage.menuDesserts).map((value, index) => {
         if(value == "blank") {
@@ -62,7 +62,7 @@ const MenuDesserts = ({ pageTitle, children }) => {
           </div>
         );
       })}
-    </div>
+    </motion.div>
   )
   
 }

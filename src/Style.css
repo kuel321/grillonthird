@@ -7,10 +7,18 @@ body {
     
 }
 
-.example::-webkit-scrollbar {
-    display: none;
-  }
-
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
 
 .navbar-container {
     height: 70px;
@@ -21,7 +29,8 @@ body {
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
-    
+    position: fixed;
+    z-index:200;
 }
 
 .logo-image {
@@ -74,7 +83,7 @@ text-align: center;
 .hero-title {
     color: white;
     font-family: 'Albert Sans', sans-serif;
-    font-size: 90px;
+    font-size: 95px;
     
     margin-top: 0rem;
     margin-bottom: 0rem;
@@ -82,7 +91,7 @@ text-align: center;
 }
 
 .hero-title-top {
-    font-size: 40px;
+    font-size: 60px;
     
     color: white;
     margin-bottom: 0rem;
@@ -112,11 +121,16 @@ text-align: center;
     background-color: rgb(41,34,28);
     display: flex;
     justify-content: center;
+    min-height:1200px;
+}
+
+.extra-bottom {
+    margin-bottom: 3rem !important;
 }
 
 .menu-container {
     display: flex;
-    justify-content: center;
+   
     flex-direction: column;
     padding-left:6rem;
     padding-right: 6rem;
@@ -142,9 +156,7 @@ text-align: center;
     border: none;
 }
 
-.menu-selection-item:hover {
-    color: #F27048;
-}
+
 
 .menu-selection-container {
     display: flex;
@@ -193,6 +205,7 @@ text-align: center;
     padding-right: 5rem;
     padding-top: 7rem;
     padding-bottom: 4rem;
+    background-color: #EDEDED;
 }
 
 .contact-container {
@@ -216,4 +229,137 @@ text-align: center;
 .contact-container p {
     font-size: 20px;
     font-family: 'Albert Sans', sans-serif;
+}
+
+.menu-container {
+    position: relative;
+
+}
+
+.menu-anchor {
+    position: absolute;
+    top: -70px;
+    left: 0;
+}
+
+@media only screen and (max-width:1300px) {
+
+    .navbar-container {
+        flex-direction: column;
+        justify-content: center;
+
+    }
+
+    .logo-image {
+        width: 50px;
+    }
+
+    .hero-title-container {
+        top: 7rem;
+        
+    }
+
+    .menu-section-container {
+        margin-top: -0.5rem;
+    }
+
+    .order {
+        margin-right: 0rem;
+    }
+
+    .nav-links {
+        margin-right: 0rem;
+    }
+    .menu-container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .menu-selection-item {
+        font-size: 12px;
+    }
+
+    .hero-title-top {
+        font-size: 20px;
+    }
+
+    .hero-title {
+        font-size: 30px;
+    }
+
+    .nav-link {
+        font-size: 10px;
+    }
+    .hero-image {
+        display:none;
+    }
+
+    .nav-and-hero {
+        background-image: url("https://thegrill.bulldog.rocks/admin/wp-content/uploads/2022/10/TheGrill-Website-HomeSplash.png");
+        background-size: cover;
+        height:350px;
+    }
+
+    .mapouter{
+
+        overflow:hidden;
+    
+        padding-bottom:56.25%;
+    
+        position:relative;
+        left: -1rem;
+        height:11px !important;
+        width: 170px !important;
+    
+    }
+    .map-and-contact {
+        padding-left: 0rem;
+        padding-right: 0rem;
+        padding-top: 2rem;
+    }
+    .contact-container {
+        padding-left: 1rem;
+    }
+
+    .menu-title {
+        font-size: 40px;
+    }
+
+    .location-title {
+        font-size: 19px;
+    }
+
+    .location-container p {
+        font-size: 10px;
+    }
+
+    .hours-title {
+        font-size: 19px;
+    }
+
+    .hours-container p {
+        font-size: 10px;
+    }
+    
+    .mapouter iframe{
+    
+        left:0;
+    
+        top:0;
+    
+        height:100%;
+    
+        width:100%;
+    
+        position:absolute;
+    
+    }
+
+    .menu-item-title {
+        font-size: 25px;
+    }
+
+    .menu-item-subtitle {
+        font-size: 19px;
+    }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
-
+import { motion } from "framer-motion"
 
 const MenuEntrees = ({ pageTitle, children }) => {
     const data = useStaticQuery(graphql`
@@ -12,6 +12,7 @@ const MenuEntrees = ({ pageTitle, children }) => {
           entreeItem2
           entreeItem2Desc
           entreeItem3
+          item3Desc
           entreeItem4
           entreeItem4Desc
           entreeItem5
@@ -24,7 +25,15 @@ const MenuEntrees = ({ pageTitle, children }) => {
           entreeItem8Desc
           entreeItem9
           entreeItem9Desc
-          item3Desc
+          
+        }
+        menuSteakToppers {
+          steakTopper1
+          steakTopper2
+          steakTopper3
+          steakTopper4
+          steakTopper5
+          steakTopper6
         }
       }
     }
@@ -35,7 +44,7 @@ const MenuEntrees = ({ pageTitle, children }) => {
   return (
 
 
-    <div>
+    <motion.div animate={{ x: 50 }}>
       {/* 👇️ iterate object VALUES */}
       {Object.values(data.wpPage.menuEntrees).map((value, index) => {
 
@@ -61,7 +70,22 @@ const MenuEntrees = ({ pageTitle, children }) => {
           </div>
         );
       })}
-    </div>
+
+      <h1 className='soup-title'>STEAK TOPPERS</h1>
+      {Object.values(data.wpPage.menuSteakToppers).map((value, index) => {
+
+
+
+return (
+  <div key={index} className="menu-item-container">
+   
+   <h2 className='menu-item-title extra-bottom'>{value}</h2>
+
+
+  </div>
+);
+})}
+    </motion.div>
   )
   
 }
