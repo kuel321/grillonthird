@@ -23,6 +23,17 @@ const Nav = ({ pageTitle, children }) => {
       }
     }
   `)
+
+  const scrollMenu = () => {
+    const section = document.querySelector('#menu');
+    section.scrollIntoView( { behavior: 'smooth', block: 'start' } );
+    console.log("clicked");
+  }
+  const scrollLocation = () => {
+    const section = document.querySelector('#location');
+    section.scrollIntoView( { behavior: 'smooth', block: 'start' } );
+    console.log("clicked");
+  }
   return (
     <div className="navbar-container">
   
@@ -30,9 +41,9 @@ const Nav = ({ pageTitle, children }) => {
             <img src={data.wpPage.gatsby.logoImage.mediaItemUrl} className="logo-image"></img>
         </div>
         <div className='nav-links'>
-            <a className='nav-link'>HOME</a>
-            <a className='nav-link'>MENU</a>
-            <a className='nav-link'>LOCATION & HOURS</a>
+            <a  className='nav-link'>HOME</a>
+            <a onClick={scrollMenu} className='nav-link'>MENU</a>
+            <a onClick={scrollLocation} className='nav-link'>LOCATION & HOURS</a>
             <a className='nav-link order'>PLACE ORDER</a>
         </div>
       

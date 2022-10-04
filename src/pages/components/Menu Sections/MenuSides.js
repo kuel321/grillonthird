@@ -2,28 +2,30 @@ import React from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 
 
-const MenuAppetizers = ({ pageTitle, children }) => {
+const MenuSides = ({ pageTitle, children }) => {
     const data = useStaticQuery(graphql`
     query {
-      wpPage(id: {eq: "cG9zdDo4"}) {
-        menuApp {
-          item1
-          item1Desc
-          item2
-          item2Desc
-          item3
-          item3Desc
-          item4
-          item4Desc
-          item5
-          item5Desc
-          item6
-          item6Desc
-          item7
-          item7Desc
+        wpPage(id: {eq: "cG9zdDo4"}) {
+            id
+            menuSides {
+              side1
+              side1Desc
+              side2
+              side2Desc
+              side3
+              side3Desc
+              side4
+              side4Desc
+              side5
+              side5Desc
+              side6
+              side6Desc
+              side7
+            }
+          }
         }
-      }
-    }
+        
+  
   `)
   
   
@@ -32,10 +34,11 @@ const MenuAppetizers = ({ pageTitle, children }) => {
 
     <div>
       {/* 👇️ iterate object VALUES */}
-      {Object.values(data.wpPage.menuApp).map((value, index) => {
+      {Object.values(data.wpPage.menuSides).map((value, index) => {
 
         if (index % 2==0) {
             return (
+                
                 <div key={index} className="menu-item-container">
                  
                   <h2 className='menu-item-title'>{value}</h2>
@@ -60,4 +63,4 @@ const MenuAppetizers = ({ pageTitle, children }) => {
   
 }
 
-export default MenuAppetizers
+export default MenuSides

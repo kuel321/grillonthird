@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import Nav from './components/Nav';
 import Menu from './components/Menu';
+import MapSection from './components/MapSection';
 
 
 const Layout = ({ pageTitle, children }) => {
@@ -37,6 +38,9 @@ const Layout = ({ pageTitle, children }) => {
       </div>
     <div className='menu-section-container'>
       <Menu />
+    </div>
+    <div className='map-and-contact-container'>
+      <MapSection />
     </div>
 
 

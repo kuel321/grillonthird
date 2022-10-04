@@ -82,10 +82,11 @@ text-align: center;
 }
 
 .hero-title-top {
-    font-size: 36px;
-    font-family:  'Albert Sans', sans-serif;
+    font-size: 40px;
+    
     color: white;
     margin-bottom: 0rem;
+    font-family: 'Crimson Pro', serif;
     font-style: italic;
 }
 
@@ -171,4 +172,48 @@ text-align: center;
 .menu-items-container {
     margin-top: 3rem;
     display: flex;
+}
+
+.soup-title {
+    font-size: 36px;
+    color: #F27048;
+    font-family: 'Albert Sans', sans-serif;
+}
+
+.active {
+    color: #F27048;
+}
+
+
+.map-and-contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 7rem;
+    padding-bottom: 4rem;
+}
+
+.contact-container {
+    padding-left: 4rem;
+}
+
+.location-title {
+    font-size: 45px;
+    font-family: 'Albert Sans', sans-serif;
+    color: #29221C;
+    font-weight: 700;
+}
+
+.hours-title {
+    font-weight: 700;
+    font-size: 45px;
+    font-family: 'Albert Sans', sans-serif;
+    color: #29221C;
+}
+
+.contact-container p {
+    font-size: 20px;
+    font-family: 'Albert Sans', sans-serif;
 }
