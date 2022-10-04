@@ -7,23 +7,22 @@ const MenuAppetizers = ({ pageTitle, children }) => {
     query {
       wpPage(id: {eq: "cG9zdDo4"}) {
         menuApp {
-           
-            item1
-            item1Desc
-            item2
-            item2Desc
-            item3
-            item3Desc
-            item4
-            item4Desc
-            item5
-            item5Desc
-            item6
-            item6Desc
-            item7
-            item7Desc
-          }
+          item1
+          item7Desc
+          item1Desc
+          item2
+          item2Desc
+          item3
+          item3Desc
+          item4
+          item4Desc
+          item5
+          item5Desc
+          item6
+          item6Desc
+          item7
         }
+      }
     }
   `)
   
@@ -39,7 +38,7 @@ const MenuAppetizers = ({ pageTitle, children }) => {
             return (
                 <div key={index} className="menu-item-container">
                  
-                  <h2>{value}</h2>
+                  <h2 className='menu-item-title'>{value}</h2>
       
                 
                 </div>
@@ -50,7 +49,7 @@ const MenuAppetizers = ({ pageTitle, children }) => {
         return (
           <div key={index} className="menu-item-container">
            
-            <p>{value}</p>
+            <p className='menu-item-subtitle'>{value}</p>
 
         
           </div>

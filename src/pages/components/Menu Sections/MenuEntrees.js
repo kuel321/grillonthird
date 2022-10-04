@@ -7,27 +7,28 @@ const MenuEntrees = ({ pageTitle, children }) => {
     query {
       wpPage(id: {eq: "cG9zdDo4"}) {
         menuEntrees {
-            item1
-            item1Desc
-            item2
-            item2Desc
-            item3
-            item3Desc
-            item4
-            item4Desc
-            item5
-            item5Desc
-            item6
-            item6Desc
-            item7
-            item7Desc
-            item8
-            item8Desc
-            item9
-            item9Desc
-          }
+          entreeItem1
+          entreeItem1Desc
+          entreeItem2
+          entreeItem2Desc
+          entreeItem3
+          entreeItem4
+          entreeItem4Desc
+          entreeItem5
+          entreeItem5Desc
+          entreeItem6
+          entreeItem6Desc
+          entreeItem7
+          entreeItem7Desc
+          entreeItem8
+          entreeItem8Desc
+          entreeItem9
+          entreeItem9Desc
+          item3Desc
         }
+      }
     }
+  
   `)
   
   
@@ -43,7 +44,7 @@ const MenuEntrees = ({ pageTitle, children }) => {
                 
                 <div key={index} className="menu-item-container">
                  
-                  <h2>{value}</h2>
+                  <h2 className='menu-item-title'>{value}</h2>
       
                 
                 </div>
@@ -54,7 +55,7 @@ const MenuEntrees = ({ pageTitle, children }) => {
         return (
           <div key={index} className="menu-item-container">
            
-            <p>{value}</p>
+            <p className='menu-item-subtitle'>{value}</p>
 
         
           </div>

@@ -24,7 +24,7 @@ export default class Test extends Component {
    
     return (
         <div className='menu-container'>
-        <h1 className='menu-title'>Menu</h1>
+        <h1 className='menu-title'>MENU</h1>
         <div className='menu-selection-container'>
             <button onClick={() => this.changeSection(<MenuAppetizers />)} className='menu-selection-item'>APPETIZERS</button>
             
