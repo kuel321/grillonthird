@@ -5,6 +5,7 @@ import MenuSoups from './Menu Sections/MenuSoups';
 import MenuSides from './Menu Sections/MenuSides';
 import MenuDesserts from './Menu Sections/MenuDesserts';
 import { withArtDirection } from 'gatsby-plugin-image';
+import $ from 'jquery';
 
 import { motion } from "framer-motion"
 
@@ -12,6 +13,21 @@ export default class Test extends Component {
   constructor(props) {
     super(props);
 
+    this.sections = ({
+      1: <MenuAppetizers />,
+      2: <MenuEntrees />,
+      3: <MenuSoups />,
+      4: <MenuSides />,
+      5: <MenuDesserts />
+    })
+
+    this.activeButtons = ({
+      1: "active1",
+      2: "active2",
+      3: "active3",
+      4: "active4",
+      5: "active5",
+    })
 
 
     this.state = {
@@ -22,12 +38,13 @@ export default class Test extends Component {
       active4: "white",
       active5: "white",
       count: 2,
+      drag: false,
     };
   }
 
-
+  
   changeSection = (x, y) => {
-
+    if (x > y);
     this.setState({
       menuSection: x,
       active1: "white",
@@ -38,8 +55,109 @@ export default class Test extends Component {
       [y]: "active",
       
     })
+/*gardenparkrentals123**/
+  }
+
+  moveLeft = (y) => {
+    console.log(this.state.count);
+    
+    if (this.state.count >= 5 ) {
+      this.setState({
+        count: 0,
+        menuSection: this.sections[this.state.count],
+        active1: "white",
+      active2: "white",
+      active3: "white",
+      active4: "white",
+      active5: "white",
+        [y]: "active",
+   
+        
+      })
+    }
+    this.setState((prevState) => ({
+      count: prevState.count +1, menuSection: this.sections[this.state.count],
+      active1: "white",
+      active2: "white",
+      active3: "white",
+      active4: "white",
+      active5: "white",
+      [y]: "active",
+    
+    }));
+  }
+
+  moveRight = (y) => {
+    console.log(this.state.count);
+    if (this.state.count == 2 || this.state.count === 1) {
+      this.setState({
+        count: 2,
+        menuSection: this.sections[1],
+        active1: "white",
+        active2: "white",
+        active3: "white",
+        active4: "white",
+        active5: "white",
+        [y]: "active",
+      })
+    }
+    else {
+      console.log("swiped right");
+      var test = this.state.count-1;
+      console.log(test)
+      this.setState((prevState) => ({
+        count: prevState.count -1, menuSection: this.sections[test-1],
+        active1: "white",
+        active2: "white",
+        active3: "white",
+        active4: "white",
+        active5: "white",
+        [y]: "active",
+      }));
+    }
+    
+  }
+
+  
+
+ 
+  
+
+  swipeable = (event, info) => {
+    
+    const offsetx = info.offset.x;
+    const offsety = info.offset.y;
+    const velocity = info.velocity.x;
+    console.log("offset x" + ' ' + offsetx);
+    console.log("velocity" +  ' ' +  velocity);
+    console.log(this.state.count);
+    
+    if (offsetx < -100 && velocity < -150){
+      var activeButtonPlace = this.activeButtons[this.state.count];
+      this.moveLeft(activeButtonPlace);
+
+    }
+    
+    if (offsetx > 100 && velocity > 150 ) {
+       if (this.state.count === 2) {
+        console.log('count was two')
+        var activeButtonPlace = this.activeButtons[this.state.count-1];
+        this.moveRight(activeButtonPlace);
+       }
+      else {
+        var activeButtonPlace = this.activeButtons[this.state.count-2];
+        this.moveRight(activeButtonPlace);
+      }
+       
+        
+      
+      
+    }
+   
 
   }
+
+ 
 
   
 
@@ -51,6 +169,15 @@ export default class Test extends Component {
         4: <MenuSides />,
         5: <MenuDesserts />
       })
+      
+      var dragOnOrOff = "false";
+      var dragListenOrNot = false;
+      if (window.innerWidth < 1100)
+      {
+        var dragOnOrOff = "x";
+        var dragListenOrNot = true;
+      }
+     
 
     return (
       <div className='menu-container'>
@@ -78,14 +205,15 @@ export default class Test extends Component {
             transition: { duration: 0.1 },
           }} onClick={() => this.changeSection(<MenuDesserts />, "active5")} className={'menu-selection-item' + ' ' + this.state.active5}>DESSERTS</motion.button>
         </div>
-        <motion.div initial={{x:-100}} animate={{ x: -50 }} drag="x" dragConstraints={{top: 0, bottom: 0, left: 10, right: 0}}  onDragEnd={
-    (event, info) => this.setState((prevState) => ({
-      count: prevState.count +1, menuSection: sections[this.state.count]
-    }))
-  }className='menu-items-container'>
-          {this.state.menuSection}
-         
+     
+        <motion.div initial={{x:0}} animate={{ x: 0 }} drag={dragOnOrOff}  dragListener={dragListenOrNot} dragConstraints={{top: 0, bottom: 0, left: 0, right: 0}}  onDragEnd={(event, info) => this.swipeable(event, info)}
+
+  className='menu-items-container'>
+   
+        <motion.div initial={{x: -150}} animate={{x:-50}} >{this.state.menuSection}</motion.div> 
+        
         </motion.div>
+
       </div>
     )
   }

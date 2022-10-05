@@ -31,7 +31,7 @@ const Layout = ({ pageTitle, children }) => {
   const scrollMenu = () => {
     const section = document.querySelector('#menu');
     section.scrollIntoView( { behavior: 'smooth', block: 'start' } );
-    console.log("clicked");
+   
   }
     
     useEffect(() => {

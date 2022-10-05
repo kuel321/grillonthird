@@ -40,7 +40,7 @@ const MenuSoups = ({ pageTitle, children }) => {
 
 
         return (
-          <div key={index} className="menu-item-container">
+          <div  className="menu-item-container">
            
            <h2 className='menu-item-title'>{value}</h2>
 
@@ -50,10 +50,10 @@ const MenuSoups = ({ pageTitle, children }) => {
       })}
       <h1 className='soup-title'>SALADS</h1>
       {Object.values(data.wpPage.menuSalads).map((value, index) => {
-console.log(value);
+
 if(value == "blank") {
     return (
-        <div key="index" className='menu-item-container'>
+        <div  className='menu-item-container'>
             <h2 className='menu-item-title'></h2>
             </div>
     )
@@ -61,7 +61,7 @@ if(value == "blank") {
 if (index % 2==0) {
     return (
         
-        <div key={index} className="menu-item-container">
+        <div  className="menu-item-container">
          
           <h2 className='menu-item-title'>{value}</h2>
 
@@ -74,7 +74,7 @@ if (index % 2==0) {
 
 
 return (
-  <div key={index} className="menu-item-container">
+  <div  className="menu-item-container">
    
     <p className='menu-item-subtitle'>{value}</p>
 
