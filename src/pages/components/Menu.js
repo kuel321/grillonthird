@@ -21,6 +21,7 @@ export default class Test extends Component {
       active3: "white",
       active4: "white",
       active5: "white",
+      count: 2,
     };
   }
 
@@ -35,12 +36,21 @@ export default class Test extends Component {
       active4: "white",
       active5: "white",
       [y]: "active",
+      
     })
 
   }
 
-  render() {
+  
 
+  render() {
+      const sections = ({
+        1: <MenuAppetizers />,
+        2: <MenuEntrees />,
+        3: <MenuSoups />,
+        4: <MenuSides />,
+        5: <MenuDesserts />
+      })
 
     return (
       <div className='menu-container'>
@@ -68,10 +78,13 @@ export default class Test extends Component {
             transition: { duration: 0.1 },
           }} onClick={() => this.changeSection(<MenuDesserts />, "active5")} className={'menu-selection-item' + ' ' + this.state.active5}>DESSERTS</motion.button>
         </div>
-        <motion.div initial={{x:-100}} animate={{ x: -50 }} drag  onDragStart={
-    (event, info) => this.setState({menuSection: <MenuSides />})
+        <motion.div initial={{x:-100}} animate={{ x: -50 }} drag="x" dragConstraints={{top: 0, bottom: 0, left: 10, right: 0}}  onDragEnd={
+    (event, info) => this.setState((prevState) => ({
+      count: prevState.count +1, menuSection: sections[this.state.count]
+    }))
   }className='menu-items-container'>
           {this.state.menuSection}
+         
         </motion.div>
       </div>
     )
