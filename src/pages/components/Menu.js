@@ -59,37 +59,43 @@ export default class Test extends Component {
   }
 
   moveLeft = (y) => {
-    console.log(this.state.count);
+   
     
-    if (this.state.count >= 5 ) {
+    if (this.state.count == 6 ) {
+      console.log("set count to 0")
       this.setState({
-        count: 0,
-        menuSection: this.sections[this.state.count],
-        active1: "white",
+        count: 2,
+        menuSection: this.sections[2],
+        active1: "active",
       active2: "white",
       active3: "white",
       active4: "white",
       active5: "white",
-        [y]: "active",
+        
    
         
       })
+      console.log(this.state.count)
+      console.log(this.state.menuSection)
     }
-    this.setState((prevState) => ({
-      count: prevState.count +1, menuSection: this.sections[this.state.count],
-      active1: "white",
-      active2: "white",
-      active3: "white",
-      active4: "white",
-      active5: "white",
-      [y]: "active",
-    
-    }));
+    else {
+      this.setState((prevState) => ({
+        count: prevState.count +1, menuSection: this.sections[this.state.count],
+        active1: "white",
+        active2: "white",
+        active3: "white",
+        active4: "white",
+        active5: "white",
+        [y]: "active",
+      
+      }));
+    }
+   
   }
 
   moveRight = (y) => {
-    console.log(this.state.count);
-    if (this.state.count == 2 || this.state.count === 1) {
+   
+    if (this.state.count == 2 ) {
       this.setState({
         count: 2,
         menuSection: this.sections[1],
@@ -101,6 +107,8 @@ export default class Test extends Component {
         [y]: "active",
       })
     }
+
+   
     else {
       console.log("swiped right");
       var test = this.state.count-1;
@@ -128,22 +136,33 @@ export default class Test extends Component {
     const offsetx = info.offset.x;
     const offsety = info.offset.y;
     const velocity = info.velocity.x;
-    console.log("offset x" + ' ' + offsetx);
-    console.log("velocity" +  ' ' +  velocity);
+    
     console.log(this.state.count);
     
-    if (offsetx < -100 && velocity < -150){
+    if (offsetx < -100){
       var activeButtonPlace = this.activeButtons[this.state.count];
       this.moveLeft(activeButtonPlace);
 
     }
     
-    if (offsetx > 100 && velocity > 150 ) {
-       if (this.state.count === 2) {
-        console.log('count was two')
-        var activeButtonPlace = this.activeButtons[this.state.count-1];
+    if (offsetx > 100  ) {
+       
+       if (this.state.count == 1) {
+       var activeButtonPlace = this.activeButtons[this.state.count-1];
         this.moveRight(activeButtonPlace);
-       }
+      }
+      if (this.state.count == 2) {
+        this.setState({
+          count: 2,
+          menuSection: this.sections[1],
+          active1: "active",
+          active2: "white",
+          active3: "white",
+          active4: "white",
+          active5: "white",
+         
+        })
+      }
       else {
         var activeButtonPlace = this.activeButtons[this.state.count-2];
         this.moveRight(activeButtonPlace);
@@ -209,7 +228,7 @@ export default class Test extends Component {
         <motion.div initial={{x:0}} animate={{ x: 0 }} drag={dragOnOrOff}  dragListener={dragListenOrNot} dragConstraints={{top: 0, bottom: 0, left: 0, right: 0}}  onDragEnd={(event, info) => this.swipeable(event, info)}
 
   className='menu-items-container'>
-   
+
         <motion.div initial={{x: -150}} animate={{x:-50}} >{this.state.menuSection}</motion.div> 
         
         </motion.div>
