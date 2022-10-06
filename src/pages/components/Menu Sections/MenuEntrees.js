@@ -60,7 +60,13 @@ const MenuEntrees = ({ pageTitle, children }) => {
               );
         }
 
-
+        if(value == "blank") {
+          return (
+              <div  className='menu-item-container'>
+                  <h2 style={{marginBottom: "3.5rem"}} className='menu-item-title'></h2>
+                  </div>
+          )
+      }
         return (
           <div key={index} className="menu-item-container">
            

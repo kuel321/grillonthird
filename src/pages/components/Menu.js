@@ -7,6 +7,8 @@ import MenuDesserts from './Menu Sections/MenuDesserts';
 import { withArtDirection } from 'gatsby-plugin-image';
 import $ from 'jquery';
 
+import MenuBack from './Menu Sections/menuback.png'
+
 import { motion } from "framer-motion"
 
 export default class Test extends Component {
@@ -191,15 +193,16 @@ export default class Test extends Component {
       
       var dragOnOrOff = "false";
       var dragListenOrNot = false;
+      /*
       if (window.innerWidth < 1100)
       {
         var dragOnOrOff = "x";
         var dragListenOrNot = true;
       }
-     
+     */
 
     return (
-      <div className='menu-container'>
+      <div className='menu-container' >
         <div className='menu-anchor' id="menu"></div>
         <h1 className='menu-title'>MENU</h1>
         <div className='menu-selection-container'>

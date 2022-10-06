@@ -29,7 +29,7 @@ const MapSection = ({ pageTitle, children }) => {
                 <div className='location-container'>
                     <h1 className='location-title'>Location</h1>
                     <p>
-                        1513 Third Avenue
+                        1513 Third Avenue <br />
                         Huntington, WV 25701
 
                     </p>

@@ -7,6 +7,10 @@ body {
     
 }
 
+.map-and-contact {
+    align-items: flex-end;
+}
+
 html {
     overflow: scroll;
     overflow-x: hidden;
@@ -22,7 +26,7 @@ html {
 
 .navbar-container {
     height: 70px;
-    background-color: rgba(41,34,28,0.9);
+    background-color: rgba(41,34,28,1);
     width: 100%;
     
     display: flex;
@@ -53,7 +57,7 @@ html {
 .nav-links {
     display: flex;
     flex-direction: row;
-    gap: 35px;
+    gap: 80px;
     margin-right: 2rem;
     align-items: center;
 }
@@ -85,7 +89,7 @@ text-align: center;
     color: white;
     font-family: 'Albert Sans', sans-serif;
     font-size: 95px;
-    
+    text-shadow: 1px 4px 38px rgba(0,0,0,0.73);
     margin-top: 0rem;
     margin-bottom: 0rem;
     font-weight: 700;
@@ -111,12 +115,10 @@ text-align: center;
     padding: 10px;
     background-color: #F27048;
     border-radius: 10px;
-    margin-right: 1rem;
+    margin-right: 2rem;
+    color: white;
 }
 
-.order:hover {
-    color: white !important;
-}
 
 .menu-section-container {
     background-color: rgb(41,34,28);
@@ -203,6 +205,7 @@ text-align: center;
     flex-direction: row;
     justify-content: space-between;
     padding-left: 5rem;
+    align-items: baseline;
     padding-right: 5rem;
     padding-top: 7rem;
     padding-bottom: 4rem;
@@ -211,6 +214,7 @@ text-align: center;
 
 .contact-container {
     padding-left: 4rem;
+    margin-bottom: auto;
 }
 
 .location-title {
@@ -243,6 +247,10 @@ text-align: center;
     left: 0;
 }
 
+.mapouter {
+    top: 30px;
+}
+
 @media only screen and (max-width:1300px) {
 
     .navbar-container {
@@ -258,6 +266,10 @@ text-align: center;
     .hero-title-container {
         top: 7rem;
         
+    }
+
+    .nav-links {
+        gap: 25px;
     }
 
     .menu-section-container {
@@ -302,7 +314,7 @@ text-align: center;
     }
 
     .mapouter{
-
+        top: 0px !important;
         overflow:hidden;
     
         padding-bottom:56.25%;
@@ -332,6 +344,7 @@ text-align: center;
 
     .location-container p {
         font-size: 10px;
+        font-weight: 700;
     }
 
     .hours-title {
@@ -340,6 +353,7 @@ text-align: center;
 
     .hours-container p {
         font-size: 10px;
+        font-weight: 700;
     }
     
     .mapouter iframe{

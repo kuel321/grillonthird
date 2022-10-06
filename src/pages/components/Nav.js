@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
-
+import { motion } from "framer-motion"
 
 const Nav = ({ pageTitle, children }) => {
     const data = useStaticQuery(graphql`
@@ -49,7 +49,7 @@ const Nav = ({ pageTitle, children }) => {
             <a  onClick={scrollHome} className='nav-link'>HOME</a>
             <a onClick={scrollMenu} className='nav-link'>MENU</a>
             <a onClick={scrollLocation} className='nav-link'>LOCATION & HOURS</a>
-            <a  className='nav-link order'>PLACE ORDER</a>
+            <motion.a initial={{backgroundColor: "#F27048", color:"white" }} style={{color: "white"}} transition="0.3" whileHover={{backgroundColor: "white", color: "#F27048"}}  className='nav-link order'>PLACE ORDER</motion.a>
         </div>
       
       
