@@ -7,6 +7,8 @@ import MenuDesserts from './Menu Sections/MenuDesserts';
 import { withArtDirection } from 'gatsby-plugin-image';
 import $ from 'jquery';
 
+import {isMobile} from 'react-device-detect';
+
 import MenuBack from './Menu Sections/menuback.png'
 
 import { motion } from "framer-motion"
@@ -41,12 +43,18 @@ export default class Test extends Component {
       active5: "white",
       count: 2,
       drag: false,
+      selectVar: 0,
+      scrollNum: 180,
     };
   }
 
   
   changeSection = (x, y) => {
     if (x > y);
+    let activePlace = y.split("");
+   
+    var activePlaceNum = parseInt(activePlace[6]);
+    var activePlaceNumPlus = activePlaceNum + 1;
     this.setState({
       menuSection: x,
       active1: "white",
@@ -55,9 +63,12 @@ export default class Test extends Component {
       active4: "white",
       active5: "white",
       [y]: "active",
+      count: activePlaceNumPlus,
       
     })
-/*gardenparkrentals123**/
+
+  
+
   }
 
   moveLeft = (y) => {
@@ -73,8 +84,8 @@ export default class Test extends Component {
       active3: "white",
       active4: "white",
       active5: "white",
-        
-   
+      selectVar: 0
+   /*gardenparkrentals123**/
         
       })
       console.log(this.state.count)
@@ -89,8 +100,12 @@ export default class Test extends Component {
         active4: "white",
         active5: "white",
         [y]: "active",
+       // selectVar: prevState.selectVar -200
+       scrollNum: prevState.scrollNum + 100,
       
       }));
+
+      document.getElementById('selection-container').scrollTo({left: this.state.scrollNum, behavior:'smooth'})
     }
    
   }
@@ -123,6 +138,7 @@ export default class Test extends Component {
         active4: "white",
         active5: "white",
         [y]: "active",
+        selectVar: prevState.selectVar +200
       }));
     }
     
@@ -193,20 +209,22 @@ export default class Test extends Component {
       
       var dragOnOrOff = "false";
       var dragListenOrNot = false;
-      /*
-      if (window.innerWidth < 1100)
+      
+      if (isMobile)
       {
         var dragOnOrOff = "x";
         var dragListenOrNot = true;
       }
-     */
+
+      
+     
 
     return (
       <div className='menu-container'>
         
         <div className='menu-anchor' id="menu"></div>
         <h1 className='menu-title'>MENU</h1>
-        <div className='menu-selection-container'>
+        <motion.div animate={{x: this.state.selectVar}} className='menu-selection-container' id="selection-container">
           <motion.button whileHover={{
             scale: 1.2,
             transition: { duration: 0.1 },
@@ -227,8 +245,11 @@ export default class Test extends Component {
             scale: 1.2,
             transition: { duration: 0.1 },
           }} onClick={() => this.changeSection(<MenuDesserts />, "active5")} className={'menu-selection-item' + ' ' + this.state.active5}>DESSERTS</motion.button>
-        </div>
-     
+        </motion.div>
+    
+       <div className='arrowContainer'>
+        <motion.img initial={{x: -10}} animate={{x: [-10, 10, -10]}} transition={{duration: 1,  repeat: Infinity}} className='arrow' src='https://www.svgrepo.com/show/67470/right-arrow.svg'></motion.img>
+       </div>
         <motion.div initial={{x:0}} animate={{ x: 0 }} drag={dragOnOrOff}  dragListener={dragListenOrNot} dragConstraints={{top: 0, bottom: 0, left: 0, right: 0}}  onDragEnd={(event, info) => this.swipeable(event, info)}
 
   className='menu-items-container'>

@@ -33,9 +33,10 @@ html {
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index:200;
+    width: 100vw;
 }
 
 .logo-image {
@@ -174,6 +175,7 @@ text-align: center;
     outline: inherit;
     color: white;
     border: none;
+    transition: 0.4 ease;
 }
 
 
@@ -181,6 +183,11 @@ text-align: center;
 .menu-selection-container {
     display: flex;
     justify-content: space-between;
+
+
+
+
+    overflow: hidden;
 }
 
 .menu-item-title {
@@ -214,6 +221,7 @@ text-align: center;
 
 .active {
     color: #F27048;
+   
 }
 
 
@@ -268,7 +276,28 @@ text-align: center;
     top: 30px;
 }
 
+.arrowContainer {
+    display: none;
+}
+
+
+
 @media only screen and (max-width:1300px) {
+
+    .arrowContainer {
+        position: relative;
+        display: block;
+    }
+    
+    .arrow {
+        filter: invert(48%);
+        width: 40px;
+        position: absolute;
+        top: 230px;
+        right: -20px;
+        z-index: 200;
+    }
+    
 
     .navbar-container {
         flex-direction: column;
@@ -290,6 +319,7 @@ text-align: center;
     }
 
     .menu-section-container {
+
         margin-top: -0.5rem;
     }
 
@@ -303,10 +333,26 @@ text-align: center;
     .menu-container {
         padding-left: 2rem;
         padding-right: 2rem;
+        overflow-y: hidden;
+
+        
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: none;
+    }
+
+    .menu-selection-container {
+     
+    margin-right: -2rem;
+       overflow-x: scroll;
+        gap: 40px;
+        justify-content: flex-start;
     }
 
     .menu-selection-item {
-        font-size: 12px;
+        white-space: nowrap;
+        font-size: 25px;
     }
 
     .hero-title-top {
