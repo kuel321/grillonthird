@@ -202,7 +202,8 @@ export default class Test extends Component {
      */
 
     return (
-      <div className='menu-container' >
+      <div className='menu-container'>
+        
         <div className='menu-anchor' id="menu"></div>
         <h1 className='menu-title'>MENU</h1>
         <div className='menu-selection-container'>

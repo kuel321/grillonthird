@@ -121,10 +121,11 @@ text-align: center;
 
 
 .menu-section-container {
-    background-color: rgb(41,34,28);
+    position:relative;
     display: flex;
     justify-content: center;
     min-height:1200px;
+    background: rgb(41,34,28);
 }
 
 .extra-bottom {
@@ -132,12 +133,28 @@ text-align: center;
 }
 
 .menu-container {
+    
+  
+    
     display: flex;
-   
+    
     flex-direction: column;
     padding-left:6rem;
     padding-right: 6rem;
     width: 100% ;
+}
+
+.menu-section-container::before {
+    content: "";
+      background-image: url('https://thegrill.bulldog.rocks/admin/wp-content/uploads/2022/10/menuimg.png');
+      background-size: center;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.40;
+      
 }
 
 .menu-title {
