@@ -6,6 +6,7 @@ import MenuSides from './Menu Sections/MenuSides';
 import MenuDesserts from './Menu Sections/MenuDesserts';
 import { withArtDirection } from 'gatsby-plugin-image';
 import $ from 'jquery';
+import createScrollSnap from 'scroll-snap'
 
 import {isMobile} from 'react-device-detect';
 
@@ -44,36 +45,29 @@ export default class Test extends Component {
       count: 2,
       drag: false,
       selectVar: 0,
-      scrollNum: 180,
+      scrollNum: 100,
     };
   }
+ 
+  container = React.createRef()
 
-  
-  changeSection = (x, y) => {
-    if (x > y);
-    let activePlace = y.split("");
-   
-    var activePlaceNum = parseInt(activePlace[6]);
-    var activePlaceNumPlus = activePlaceNum + 1;
-    this.setState({
-      menuSection: x,
-      active1: "white",
-      active2: "white",
-      active3: "white",
-      active4: "white",
-      active5: "white",
-      [y]: "active",
-      count: activePlaceNumPlus,
-      
-    })
-
-  
-
+  bindScrollSnap() {
+    const element = this.container.current
+    createScrollSnap(element, {
+      snapDestinationX: '160px',
+      duration: 0,
+    }, () => console.log('snapped'))
   }
+
+  componentDidMount() {
+   this.bindScrollSnap()
+  }
+  
+
 
   moveLeft = (y) => {
    
-    
+   
     if (this.state.count == 6 ) {
       console.log("set count to 0")
       this.setState({
@@ -84,12 +78,14 @@ export default class Test extends Component {
       active3: "white",
       active4: "white",
       active5: "white",
-      selectVar: 0
+      selectVar: 0,
+      scrollNum: 100,
    /*gardenparkrentals123**/
         
       })
       console.log(this.state.count)
       console.log(this.state.menuSection)
+      document.getElementById('selection-container').scrollTo({ left: 10, behavior:'smooth'})
     }
     else {
       this.setState((prevState) => ({
@@ -101,11 +97,12 @@ export default class Test extends Component {
         active5: "white",
         [y]: "active",
        // selectVar: prevState.selectVar -200
-       scrollNum: prevState.scrollNum + 100,
+       scrollNum: prevState.scrollNum + prevState.scrollNum,
       
       }));
-
-      document.getElementById('selection-container').scrollTo({left: this.state.scrollNum, behavior:'smooth'})
+     // var menuSectionId = document.getElementById('menu' + this.state.count).offsetWidth;
+    
+      document.getElementById('selection-container').scrollTo({left:  this.state.scrollNum, behavior:'smooth'})
     }
    
   }
@@ -138,16 +135,50 @@ export default class Test extends Component {
         active4: "white",
         active5: "white",
         [y]: "active",
-        selectVar: prevState.selectVar +200
+       
+      
       }));
+   
     }
     
   }
 
+
+    changeSection = (x, y) => {
+     
+    
+    let activePlace = y.split("");
+   
+    var activePlaceNum = parseInt(activePlace[6]);
+    var activePlaceNumPlus = activePlaceNum + 1;
+    var activeButton = document.getElementById('menu' + activePlaceNum);
+    
+    
+   
+    this.setState({
+      menuSection: x,
+      active1: "white",
+      active2: "white",
+      active3: "white",
+      active4: "white",
+      active5: "white",
+      [y]: "active",
+      count: activePlaceNumPlus, 
+      scrollNum: 100
+     
+      
+    })
+
+    console.log(this.state.scrollNum);
+
+  
+
+  
+
+  }
   
 
  
-  
 
   swipeable = (event, info) => {
     
@@ -224,36 +255,42 @@ export default class Test extends Component {
         
         <div className='menu-anchor' id="menu"></div>
         <h1 className='menu-title'>MENU</h1>
-        <motion.div animate={{x: this.state.selectVar}} className='menu-selection-container' id="selection-container">
+        <motion.div animate={{x: this.state.selectVar}} className='menu-selection-container' ref={this.container} id="selection-container">
           <motion.button whileHover={{
             scale: 1.2,
             transition: { duration: 0.1 },
-          }} onClick={() => this.changeSection(<MenuAppetizers />, "active1")} className={'menu-selection-item' + ' ' + this.state.active1}>APPETIZERS</motion.button>
+          }} onClick={() => this.changeSection(<MenuAppetizers />, "active1")} id="menu1" className={'menu-selection-item' + ' ' + this.state.active1}>APPETIZERS</motion.button>
           <motion.button whileHover={{
             scale: 1.2,
             transition: { duration: 0.1 },
-          }} onClick={() => this.changeSection(<MenuEntrees />, "active2")} className={'menu-selection-item' + ' ' + this.state.active2}>ENTREES</motion.button>
+          }} onClick={() => this.changeSection(<MenuEntrees />, "active2")} id="menu2" className={'menu-selection-item' + ' ' + this.state.active2}>ENTREES</motion.button>
           <motion.button whileHover={{
             scale: 1.2,
             transition: { duration: 0.1 },
-          }} onClick={() => this.changeSection(<MenuSoups />, "active3")} className={'menu-selection-item' + ' ' + this.state.active3}>SOUPS & SALADS</motion.button>
+          }} onClick={() => this.changeSection(<MenuSoups />, "active3")} id="menu3" className={'menu-selection-item' + ' ' + this.state.active3}>SOUPS & SALADS</motion.button>
           <motion.button whileHover={{
             scale: 1.2,
             transition: { duration: 0.1 },
-          }} onClick={() => this.changeSection(<MenuSides />, "active4")} className={'menu-selection-item' + ' ' + this.state.active4}>SIDES</motion.button>
+          }} onClick={() => this.changeSection(<MenuSides />, "active4")} id="menu4" className={'menu-selection-item' + ' ' + this.state.active4}>SIDES</motion.button>
           <motion.button whileHover={{
             scale: 1.2,
             transition: { duration: 0.1 },
-          }} onClick={() => this.changeSection(<MenuDesserts />, "active5")} className={'menu-selection-item' + ' ' + this.state.active5}>DESSERTS</motion.button>
+          }} onClick={() => this.changeSection(<MenuDesserts />, "active5")} id="menu5" className={'menu-selection-item' + ' ' + this.state.active5}>DESSERTS</motion.button>
+          <motion.button whileHover={{
+            scale: 1.2,
+            transition: { duration: 0.1 },
+          }} onClick={() => this.changeSection(<MenuDesserts />, "active5")} id="menu5" className={'menu-selection-item' + ' ' + this.state.active5}>{' '}{' '}</motion.button>
         </motion.div>
+        
     
        <div className='arrowContainer'>
         <motion.img initial={{x: -10}} animate={{x: [-10, 10, -10]}} transition={{duration: 1,  repeat: Infinity}} className='arrow' src='https://www.svgrepo.com/show/67470/right-arrow.svg'></motion.img>
        </div>
+     
         <motion.div initial={{x:0}} animate={{ x: 0 }} drag={dragOnOrOff}  dragListener={dragListenOrNot} dragConstraints={{top: 0, bottom: 0, left: 0, right: 0}}  onDragEnd={(event, info) => this.swipeable(event, info)}
-
+               
   className='menu-items-container'>
-
+      
         <motion.div initial={{x: -150}} animate={{x:-50}} >{this.state.menuSection}</motion.div> 
         
         </motion.div>

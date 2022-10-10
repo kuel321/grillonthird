@@ -221,6 +221,8 @@ text-align: center;
 
 .active {
     color: #F27048;
+    font-weight: 700;
+    font-size: 30px !important;
    
 }
 
@@ -353,6 +355,7 @@ text-align: center;
     .menu-selection-item {
         white-space: nowrap;
         font-size: 25px;
+        
     }
 
     .hero-title-top {
