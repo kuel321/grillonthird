@@ -34,6 +34,14 @@ export default class Test extends Component {
       5: "active5",
     })
 
+    this.scrollPositions = ({
+      0: 0,
+      1: 179,
+      2: 320,
+      3: 510,
+      5: 562,
+    })
+
 
     this.state = {
       menuSection: <MenuAppetizers />,
@@ -46,6 +54,7 @@ export default class Test extends Component {
       drag: false,
       selectVar: 0,
       scrollNum: 100,
+      scrollPos: 179,
     };
   }
  
@@ -54,13 +63,13 @@ export default class Test extends Component {
   bindScrollSnap() {
     const element = this.container.current
     createScrollSnap(element, {
-      snapDestinationX: '160px',
+      snapDestinationX: '5px',
       duration: 0,
     }, () => console.log('snapped'))
   }
 
   componentDidMount() {
-   this.bindScrollSnap()
+   //this.bindScrollSnap()
   }
   
 
@@ -69,8 +78,9 @@ export default class Test extends Component {
    
    
     if (this.state.count == 6 ) {
-      console.log("set count to 0")
-      this.setState({
+     
+
+      this.setState((state, props) => ({
         count: 2,
         menuSection: this.sections[2],
         active1: "active",
@@ -79,15 +89,25 @@ export default class Test extends Component {
       active4: "white",
       active5: "white",
       selectVar: 0,
-      scrollNum: 100,
-   /*gardenparkrentals123**/
-        
-      })
+      scrollPos: this.scrollPositions[0]
+     }), ()=>{
+      $('#selection-container').animate({
+        scrollLeft: this.state.scrollPos}, 300);
+        console.log("set count to 0")
+      
+     });
+
+
+
+      /*
       console.log(this.state.count)
       console.log(this.state.menuSection)
       document.getElementById('selection-container').scrollTo({ left: 10, behavior:'smooth'})
+      */
+
     }
     else {
+      var menuSize = $('#menu' + this.state.count).width();
       this.setState((prevState) => ({
         count: prevState.count +1, menuSection: this.sections[this.state.count],
         active1: "white",
@@ -98,11 +118,40 @@ export default class Test extends Component {
         [y]: "active",
        // selectVar: prevState.selectVar -200
        scrollNum: prevState.scrollNum + prevState.scrollNum,
+       scrollPos: this.scrollPositions[prevState.count],
       
       }));
+
+
      // var menuSectionId = document.getElementById('menu' + this.state.count).offsetWidth;
-    
-      document.getElementById('selection-container').scrollTo({left:  this.state.scrollNum, behavior:'smooth'})
+      
+      //document.getElementById('selection-container').scrollTo({left:  this.state.scrollNum, behavior:'smooth'})
+
+      
+      
+  
+     // $('#selection-container').scrollLeft(this.state.scrollPos);
+
+     if (this.state.scrollPos == 0){
+
+      this.setState((state, props) => ({
+        scrollPos: this.scrollPositions[1]
+     }), ()=>{
+      $('#selection-container').animate({
+        scrollLeft: this.state.scrollPos}, 300);
+       // console.log(activePlaceNum + ' ' + this.scrollPositions[activePlaceNum])
+     });
+
+     }
+     else {
+      $('#selection-container').animate({
+        scrollLeft: this.scrollPositions[this.state.count-1]}, 300);
+        console.log(this.state.scrollPos);
+     }
+
+     
+         
+
     }
    
   }
@@ -127,6 +176,11 @@ export default class Test extends Component {
       console.log("swiped right");
       var test = this.state.count-1;
       console.log(test)
+      let activePlace = y.split("");
+   
+      var activePlaceNum = parseInt(activePlace[6]);
+
+
       this.setState((prevState) => ({
         count: prevState.count -1, menuSection: this.sections[test-1],
         active1: "white",
@@ -135,9 +189,13 @@ export default class Test extends Component {
         active4: "white",
         active5: "white",
         [y]: "active",
-       
+      scrollPos: this.scrollPositions[prevState.count -1]
+     }), ()=>{
+      $('#selection-container').animate({
+        scrollLeft: this.scrollPositions[activePlaceNum -1]}, 300);
+        
       
-      }));
+     });
    
     }
     
@@ -145,6 +203,8 @@ export default class Test extends Component {
 
 
     changeSection = (x, y) => {
+
+    
      
     
     let activePlace = y.split("");
@@ -153,6 +213,23 @@ export default class Test extends Component {
     var activePlaceNumPlus = activePlaceNum + 1;
     var activeButton = document.getElementById('menu' + activePlaceNum);
     
+    if (isMobile) {
+
+
+     
+      this.setState((state, props) => ({
+        scrollPos: this.scrollPositions[activePlaceNum-1]
+     }), ()=>{
+      $('#selection-container').animate({
+        scrollLeft: this.state.scrollPos}, 300);
+      // console.log(activePlaceNum + ' ' + this.scrollPositions[activePlaceNum])
+     });
+      
+   
+
+       
+    }
+
     
    
     this.setState({
@@ -164,17 +241,28 @@ export default class Test extends Component {
       active5: "white",
       [y]: "active",
       count: activePlaceNumPlus, 
-      scrollNum: 100
+      
      
       
     })
 
-    console.log(this.state.scrollNum);
+   // console.log(this.state.scrollNum);
 
   
 
   
 
+  }
+
+  selectButton = () => {
+    var menuSize = $('#menu' + this.state.count).width();
+    this.setState((prevState) => ({
+      scrollPos: prevState.scrollPos + menuSize,
+    }))
+
+    $('#selection-container').scrollLeft(this.state.scrollPos);
+    
+    console.log(menuSize);
   }
   
 
@@ -252,7 +340,7 @@ export default class Test extends Component {
 
     return (
       <div className='menu-container'>
-        
+        <div><button onClick={this.selectButton}>Scroll to three</button></div>
         <div className='menu-anchor' id="menu"></div>
         <h1 className='menu-title'>MENU</h1>
         <motion.div animate={{x: this.state.selectVar}} className='menu-selection-container' ref={this.container} id="selection-container">
