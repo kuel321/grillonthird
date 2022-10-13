@@ -4,11 +4,11 @@ import MenuEntrees from './Menu Sections/MenuEntrees'
 import MenuSoups from './Menu Sections/MenuSoups';
 import MenuSides from './Menu Sections/MenuSides';
 import MenuDesserts from './Menu Sections/MenuDesserts';
-import { withArtDirection } from 'gatsby-plugin-image';
-import $ from 'jquery';
-import createScrollSnap from 'scroll-snap'
 
-import {isMobile} from 'react-device-detect';
+import $ from 'jquery';
+
+
+//import {isMobile} from 'react-device-detect';
 
 import MenuBack from './Menu Sections/menuback.png'
 
@@ -58,20 +58,29 @@ export default class Test extends Component {
     };
   }
  
-  container = React.createRef()
+ 
 
-  bindScrollSnap() {
-    const element = this.container.current
-    createScrollSnap(element, {
-      snapDestinationX: '5px',
-      duration: 0,
-    }, () => console.log('snapped'))
+ async componentDidMount() {
+    $('.menu-items-container').css('transform: none;')
+    $('.menu-items-container').css('user-select: none;')
+    $('.menu-items-container').css('touch-action: pan-y;')
+
+   
+
   }
 
-  componentDidMount() {
-   //this.bindScrollSnap()
+  changeCSS = () => {
+
+    function change(){
+      $('.menu-items-container').css('transform: none;')
+      $('.menu-items-container').css('user-select: none;')
+      $('.menu-items-container').css('touch-action: pan-y;')
+    }
+
+    setTimeout(change, 2000);
+ 
   }
-  
+
 
 
   moveLeft = (y) => {
@@ -93,7 +102,7 @@ export default class Test extends Component {
      }), ()=>{
       $('#selection-container').animate({
         scrollLeft: this.state.scrollPos}, 300);
-        console.log("set count to 0")
+       // console.log("set count to 0")
       
      });
 
@@ -146,7 +155,7 @@ export default class Test extends Component {
      else {
       $('#selection-container').animate({
         scrollLeft: this.scrollPositions[this.state.count-1]}, 300);
-        console.log(this.state.scrollPos);
+      //  console.log(this.state.scrollPos);
      }
 
      
@@ -175,7 +184,7 @@ export default class Test extends Component {
     else {
       console.log("swiped right");
       var test = this.state.count-1;
-      console.log(test)
+     // console.log(test)
       let activePlace = y.split("");
    
       var activePlaceNum = parseInt(activePlace[6]);
@@ -213,7 +222,7 @@ export default class Test extends Component {
     var activePlaceNumPlus = activePlaceNum + 1;
     var activeButton = document.getElementById('menu' + activePlaceNum);
     
-    if (isMobile) {
+
 
 
      
@@ -228,7 +237,7 @@ export default class Test extends Component {
    
 
        
-    }
+    
 
     
    
@@ -254,17 +263,7 @@ export default class Test extends Component {
 
   }
 
-  selectButton = () => {
-    var menuSize = $('#menu' + this.state.count).width();
-    this.setState((prevState) => ({
-      scrollPos: prevState.scrollPos + menuSize,
-    }))
 
-    $('#selection-container').scrollLeft(this.state.scrollPos);
-    
-    console.log(menuSize);
-  }
-  
 
  
 
@@ -274,16 +273,17 @@ export default class Test extends Component {
     const offsety = info.offset.y;
     const velocity = info.velocity.x;
     
-    console.log(this.state.count);
-    
-    if (offsetx < -100){
+    //console.log(this.state.count);
+    console.log(velocity)
+    if (offsetx < -100 && velocity < -400){
       var activeButtonPlace = this.activeButtons[this.state.count];
       this.moveLeft(activeButtonPlace);
-
+      console.log("velocity" + velocity);
     }
     
-    if (offsetx > 100  ) {
-       
+    if (offsetx > 100 && velocity > 400 ) {
+      //console.log(offsetx);
+      console.log("velocity" + velocity);
        if (this.state.count == 1) {
        var activeButtonPlace = this.activeButtons[this.state.count-1];
         this.moveRight(activeButtonPlace);
@@ -326,24 +326,27 @@ export default class Test extends Component {
         5: <MenuDesserts />
       })
       
-      var dragOnOrOff = "false";
-      var dragListenOrNot = false;
+    //  var dragOnOrOff = "false";
+     // var dragListenOrNot = false;
       
-      if (isMobile)
-      {
+      //if (isMobile)
+      //{
+
         var dragOnOrOff = "x";
         var dragListenOrNot = true;
-      }
+        
+    //  }
 
       
      
 
     return (
       <div className='menu-container'>
-        <div><button onClick={this.selectButton}>Scroll to three</button></div>
+        {this.changeCSS()}
+        
         <div className='menu-anchor' id="menu"></div>
         <h1 className='menu-title'>MENU</h1>
-        <motion.div animate={{x: this.state.selectVar}} className='menu-selection-container' ref={this.container} id="selection-container">
+        <motion.div animate={{x: this.state.selectVar}} className='menu-selection-container' id="selection-container" >
           <motion.button whileHover={{
             scale: 1.2,
             transition: { duration: 0.1 },
@@ -369,11 +372,14 @@ export default class Test extends Component {
             transition: { duration: 0.1 },
           }} onClick={() => this.changeSection(<MenuDesserts />, "active5")} id="menu5" className={'menu-selection-item' + ' ' + this.state.active5}>{' '}{' '}</motion.button>
         </motion.div>
+
+       
         
-    
+     {/*
        <div className='arrowContainer'>
         <motion.img initial={{x: -10}} animate={{x: [-10, 10, -10]}} transition={{duration: 1,  repeat: Infinity}} className='arrow' src='https://www.svgrepo.com/show/67470/right-arrow.svg'></motion.img>
        </div>
+        */}
      
         <motion.div initial={{x:0}} animate={{ x: 0 }} drag={dragOnOrOff}  dragListener={dragListenOrNot} dragConstraints={{top: 0, bottom: 0, left: 0, right: 0}}  onDragEnd={(event, info) => this.swipeable(event, info)}
                
@@ -387,3 +393,4 @@ export default class Test extends Component {
     )
   }
 }
+ 

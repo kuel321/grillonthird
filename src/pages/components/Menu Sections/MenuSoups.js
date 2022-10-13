@@ -12,14 +12,15 @@ const MenuSoups = ({ pageTitle, children }) => {
               soupItem2
             }
             menuSalads {
-                saladItem1
-                saladItem1Desc
-                saladItem2
-                saladItem2Desc
-                saladItem3
-                saladItem4
-                saladItem3Desc
-                saladItem4Desc
+              saladItem1
+              saladItem1Desc
+              saladItem2
+              saladItem2Desc
+              saladItem3
+              saladItem3Desc
+              saladItem4
+              saladItem4Desc
+            
             }
           }
         }
@@ -54,7 +55,7 @@ const MenuSoups = ({ pageTitle, children }) => {
 if(value == "blank") {
     return (
         <div  className='menu-item-container'>
-            <h2 className='menu-item-title'></h2>
+            <h2 style={{marginBottom: "2.9rem"}} className='menu-item-title'></h2>
             </div>
     )
 }

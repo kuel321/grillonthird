@@ -37,14 +37,14 @@ const Layout = ({ pageTitle, children }) => {
   }
     
     useEffect(() => {
-        setTimeout(scrollMenu, 2000);
+       // setTimeout(scrollMenu, 2000);
     })
  
   return (
     <div className="home" id="home1">
       <div className='nav-and-hero'>
         <Nav />
-        <img className='hero-image' src={data.wpPage.gatsby.heroImage.mediaItemUrl} ></img>
+       
         <motion.div initial={{ opacity: 0, y: -299 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0 }} transition={{duration: 1.5}} className='hero-title-container'>

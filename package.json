@@ -28,6 +28,7 @@
     "react": "^18.1.0",
     "react-device-detect": "^2.2.2",
     "react-dom": "^18.1.0",
-    "scroll-snap": "^4.0.3"
+    "scroll-snap": "^4.0.3",
+    "yarn": "^1.22.19"
   }
 }
