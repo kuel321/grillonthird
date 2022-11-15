@@ -34,6 +34,8 @@ const MenuEntrees = ({ pageTitle, children }) => {
           steakTopper4
           steakTopper5
           steakTopper6
+          steakTopper7
+          steakTopper8
         }
       }
     }
