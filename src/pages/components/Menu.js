@@ -65,7 +65,7 @@ export default class Test extends Component {
     $('.menu-items-container').css('user-select: none;')
     $('.menu-items-container').css('touch-action: pan-y;')
 
-
+    console.log("dev mode");
 
   }
 

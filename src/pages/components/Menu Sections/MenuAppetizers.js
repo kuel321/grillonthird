@@ -13,7 +13,7 @@ const MenuAppetizers = ({ pageTitle, children }) => {
           item2
           item2Desc
           item3
-          item3Desc
+          item3Desc1
           item4
           item4Desc
           item5

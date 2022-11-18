@@ -22,6 +22,12 @@ const MenuSides = ({ pageTitle, children }) => {
               side6Desc
               side7
               side7Desc
+              side8
+              side8Desc
+              side9
+              side9Desc
+              side10
+              side10Desc
             }
           }
         }

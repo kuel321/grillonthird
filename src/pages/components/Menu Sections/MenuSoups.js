@@ -49,7 +49,7 @@ const MenuSoups = ({ pageTitle, children }) => {
           </div>
         );
       })}
-      <h1 className='soup-title'>SALADS <p className='menu-item-subtitle extra-text'> *Add a protein to any salad</p></h1>
+      <h1 className='soup-title'>SALADS <p className='menu-item-subtitle extra-text'> *Add a protein to any salad. Chicken, Shrimp or Steak.</p></h1>
       {Object.values(data.wpPage.menuSalads).map((value, index) => {
 
 if(value == "blank") {
