@@ -39,6 +39,11 @@ const Nav = ({ pageTitle, children }) => {
     section.scrollIntoView( { behavior: 'smooth', block: 'start' } );
     console.log("clicked");
   }
+
+  const comingSoonAlert = () => {
+    alert("Coming soon!");
+    console.log("test");
+  }
   return (
     <div className="navbar-container">
   
@@ -49,7 +54,18 @@ const Nav = ({ pageTitle, children }) => {
             <a  onClick={scrollHome} className='nav-link'>HOME</a>
             <a onClick={scrollMenu} className='nav-link'>MENU</a>
             <a onClick={scrollLocation} className='nav-link'>LOCATION & HOURS</a>
-            <motion.a initial={{backgroundColor: "#F27048", color:"white" }} style={{color: "white"}} transition="0.3" whileHover={{backgroundColor: "white", color: "#F27048"}}  className='nav-link order'>PLACE ORDER</motion.a>
+            <motion.a  onClick={comingSoonAlert} initial={{backgroundColor: "#F27048", color:"white" }} style={{color: "white"}} transition="0.3" whileHover={{backgroundColor: "white", color: "#F27048"}}  className='nav-link order'>PLACE ORDER</motion.a>
+        <div className='social-icons'>
+          <a href='https://www.facebook.com/thegrillonthird' target="_BLANK">
+          <img className='social-icon-f' src="https://thegrill.bulldog.rocks/admin/wp-content/uploads/2022/12/107175_circle_facebook_icon.png">
+
+          </img>
+
+          </a>
+          <a href='https://www.instagram.com/thegrillonthird/?hl=en' target="_BLANK">
+          <img className='social-icon-i' src='https://thegrill.bulldog.rocks/admin/wp-content/uploads/2022/12/1298747_instagram_brand_logo_social-media_icon.png'></img>
+          </a>
+        </div>
         </div>
       
       

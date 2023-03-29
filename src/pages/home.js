@@ -5,7 +5,7 @@ import Menu from './components/Menu';
 import MapSection from './components/MapSection';
 import { motion } from "framer-motion"
 
-import MenuBack from './components/Menu Sections/menuback.png'
+
 
 const Layout = ({ pageTitle, children }) => {
 
@@ -59,7 +59,8 @@ const Layout = ({ pageTitle, children }) => {
       <div className='map-and-contact-container'>
         <MapSection />
       </div>
-
+      
+      
 
     </div>
   )

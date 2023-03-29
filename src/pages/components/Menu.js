@@ -10,7 +10,7 @@ import $ from 'jquery';
 
 //import {isMobile} from 'react-device-detect';
 
-import MenuBack from './Menu Sections/menuback.png'
+
 
 import { motion } from "framer-motion"
 
@@ -357,7 +357,7 @@ export default class Test extends Component {
     return (
       <div className='menu-container'>
         {this.changeCSS()}
-
+        
         <div className='menu-anchor' id="menu"></div>
         <h1 className='menu-title'>MENU</h1>
         <motion.div animate={{ x: this.state.selectVar }} className='menu-selection-container' id="selection-container" >

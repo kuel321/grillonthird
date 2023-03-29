@@ -7,8 +7,18 @@ body {
     
 }
 
+.smaller {
+    font-size: 10x;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+}
+
 .map-and-contact {
     align-items: flex-end;
+}
+
+.sides {
+    text-transform: uppercase;
 }
 
 html {
@@ -120,7 +130,7 @@ text-align: center;
     padding: 10px;
     background-color: #F27048;
     border-radius: 10px;
-    margin-right: 2rem;
+    margin-right: -2rem;
     color: white;
 }
 
@@ -151,7 +161,7 @@ text-align: center;
 
 .menu-section-container::before {
     content: "";
-      background-image: url('https://thegrill.bulldog.rocks/admin/wp-content/uploads/2022/10/menuimg.png');
+      background-image: url('https://thegrill.bulldog.rocks/admin/wp-content/uploads/2022/12/menuimg-min-2.png');
       background-size: center;
       position: absolute;
       top: 0px;
@@ -203,6 +213,7 @@ text-align: center;
 }
 
 .menu-item-subtitle {
+    max-width: 900px;
     cursor: default;
     margin-top: 0rem;
     font-family: 'Crimson Pro', serif;
@@ -292,6 +303,28 @@ text-align: center;
     display: none;
 }
 
+.social-icons-bottom {
+    display: flex;
+    
+    background-color: #EDEDED;
+    gap: 20px;
+height: 80px;
+}
+
+.social-icons {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 15px
+}
+
+.social-icon-i {
+    width: 35px;
+}
+
+.social-icon-f {
+    width: 38px;
+}
 
 
 @media only screen and (max-width:1300px) {
@@ -398,7 +431,7 @@ text-align: center;
         position:relative;
         left: -1rem;
         height:11px !important;
-        width: 170px !important;
+        width: 67vw !important;
     
     }
     .map-and-contact {
@@ -495,4 +528,11 @@ text-align: center;
     .menu-items-container {
         padding-left: 0rem;
     }
+}
+
+@media only screen and (max-width: 699px) {
+.mapouter {
+    width: 41vw !important;
+}
+
 }

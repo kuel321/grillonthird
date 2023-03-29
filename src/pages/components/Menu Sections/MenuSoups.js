@@ -20,6 +20,8 @@ const MenuSoups = ({ pageTitle, children }) => {
               saladItem3Desc
               saladItem4
               saladItem4Desc
+              saladItem5
+              saladItem5Desc
             
             }
           }
@@ -33,6 +35,13 @@ const MenuSoups = ({ pageTitle, children }) => {
 
 
     <motion.div animate={{ x: 50 }}>
+      <p className='menu-item-title'><strong>Add a Protein</strong> 
+      <br>
+</br>
+
+
+<p className='menu-item-subtitle'>steak (10) chicken (10) shrimp (12)</p>
+</p>
         <h1 className='soup-title'>SOUPS</h1>
       {/* 👇️ iterate object VALUES */}
       {Object.values(data.wpPage.menuSoups).map((value, index) => {

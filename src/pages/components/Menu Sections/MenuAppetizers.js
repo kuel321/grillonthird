@@ -28,6 +28,8 @@ const MenuAppetizers = ({ pageTitle, children }) => {
           item9Desc
           item10
           item10Desc
+          item11
+          item11Desc
         }
       }
     }

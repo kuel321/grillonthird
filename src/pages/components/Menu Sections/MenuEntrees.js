@@ -25,6 +25,14 @@ const MenuEntrees = ({ pageTitle, children }) => {
           entreeItem8Desc
           entreeItem9
           entreeItem9Desc
+          entreeItem10
+          entreeItem10Desc
+          entreeItem11
+          entreeItem11Desc
+          entreeItem12
+          entreeItem12Desc
+          entreeItem13
+          entreeItem13Desc
           
         }
         menuSteakToppers {
@@ -48,6 +56,14 @@ const MenuEntrees = ({ pageTitle, children }) => {
 
     <motion.div animate={{ x: 50 }}>
       {/* 👇️ iterate object VALUES */}
+      <p className='menu-item-title'><strong>Early Bird Special Daily starting at 4pm to 6pm</strong> 
+      <br>
+</br>
+<strong className='menu-item-title'>This will be every day we are open Wed. to Sun.</strong>
+<br></br>
+
+<p className='menu-item-subtitle'>2 select entrees at a discounted price plus a free dessert.</p>
+</p>
       {Object.values(data.wpPage.menuEntrees).map((value, index) => {
 
         if (index % 2==0) {

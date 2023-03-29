@@ -28,6 +28,8 @@ const MenuSides = ({ pageTitle, children }) => {
               side9Desc
               side10
               side10Desc
+              side11
+              side11Desc
             }
           }
         }
@@ -40,6 +42,7 @@ const MenuSides = ({ pageTitle, children }) => {
 
 
     <motion.div animate={{ x: 50 }}>
+      <p className='menu-item-subtitle extra-text entree-edition sides'><strong>à la carte (6)</strong> </p>
       {/* 👇️ iterate object VALUES */}
       {Object.values(data.wpPage.menuSides).map((value, index) => {
 

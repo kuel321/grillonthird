@@ -1,0 +1,1 @@
+<link rel="icon" type="image/x-icon" href="https://thegrill.bulldog.rocks/admin/wp-content/uploads/2022/11/grill.png">
