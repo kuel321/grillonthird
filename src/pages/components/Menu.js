@@ -4,7 +4,7 @@ import MenuEntrees from './Menu Sections/MenuEntrees'
 import MenuSoups from './Menu Sections/MenuSoups';
 import MenuSides from './Menu Sections/MenuSides';
 import MenuDesserts from './Menu Sections/MenuDesserts';
-
+import MenuBrunch from './Menu Sections/MenuBrunch';
 import $ from 'jquery';
 
 
@@ -23,7 +23,8 @@ export default class Test extends Component {
       2: <MenuSoups />,
       3: <MenuEntrees />,
       4: <MenuSides />,
-      5: <MenuDesserts />
+      5: <MenuDesserts />,
+      6: < MenuBrunch />
     })
 
     this.activeButtons = ({
@@ -32,14 +33,16 @@ export default class Test extends Component {
       3: "active3",
       4: "active4",
       5: "active5",
+      6: "active6",
     })
 
     this.scrollPositions = ({
       0: 0,
       1: 179,
       2: 320,
-      3: 510,
-      5: 562,
+      3: 570,
+      5: 750,
+      6: 0,
     })
 
 
@@ -50,6 +53,7 @@ export default class Test extends Component {
       active3: "white",
       active4: "white",
       active5: "white",
+      active6: "white",
       count: 2,
       drag: false,
       selectVar: 0,
@@ -86,7 +90,7 @@ export default class Test extends Component {
   moveLeft = (y) => {
 
 
-    if (this.state.count == 6) {
+    if (this.state.count == 7) {
 
 
       this.setState((state, props) => ({
@@ -97,6 +101,7 @@ export default class Test extends Component {
         active3: "white",
         active4: "white",
         active5: "white",
+        active6: "white",
         selectVar: 0,
         scrollPos: this.scrollPositions[0]
       }), () => {
@@ -125,6 +130,7 @@ export default class Test extends Component {
         active3: "white",
         active4: "white",
         active5: "white",
+        active6: "white",
         [y]: "active",
         // selectVar: prevState.selectVar -200
         scrollNum: prevState.scrollNum + prevState.scrollNum,
@@ -179,6 +185,7 @@ export default class Test extends Component {
         active3: "white",
         active4: "white",
         active5: "white",
+        active6: "white",
         [y]: "active",
       })
     }
@@ -190,7 +197,7 @@ export default class Test extends Component {
       // console.log(test)
       let activePlace = y.split("");
 
-      var activePlaceNum = parseInt(activePlace[6]);
+      var activePlaceNum = parseInt(activePlace[10]);
 
 
       this.setState((prevState) => ({
@@ -200,6 +207,7 @@ export default class Test extends Component {
         active3: "white",
         active4: "white",
         active5: "white",
+        active6: "white",
         [y]: "active",
         scrollPos: this.scrollPositions[prevState.count - 1]
       }), () => {
@@ -253,6 +261,7 @@ export default class Test extends Component {
       active3: "white",
       active4: "white",
       active5: "white",
+      active6: "white",
       [y]: "active",
       count: activePlaceNumPlus,
 
@@ -279,11 +288,12 @@ export default class Test extends Component {
     const velocity = info.velocity.x;
 
     //console.log(this.state.count);
-    console.log(velocity)
+   // console.log(velocity)
     if (offsetx < -100 && velocity < -400) {
       var activeButtonPlace = this.activeButtons[this.state.count];
       this.moveLeft(activeButtonPlace);
-      console.log("velocity" + velocity);
+      console.log("moved left " + activeButtonPlace)
+     // console.log("velocity" + velocity);
     }
 
     if (offsetx > 100 && velocity > 400) {
@@ -302,6 +312,7 @@ export default class Test extends Component {
           active3: "white",
           active4: "white",
           active5: "white",
+          active6: "white",
 
         })
       }
@@ -329,7 +340,8 @@ export default class Test extends Component {
       2: <MenuSoups />,
       3: <MenuEntrees />,
       4: <MenuSides />,
-      5: <MenuDesserts />
+      5: <MenuDesserts />,
+      6: <MenuBrunch />
     })
 
     /* const sections = ({
@@ -360,6 +372,7 @@ export default class Test extends Component {
         
         <div className='menu-anchor' id="menu"></div>
         <h1 className='menu-title'>MENU</h1>
+  
         <motion.div animate={{ x: this.state.selectVar }} className='menu-selection-container' id="selection-container" >
           <motion.button whileHover={{
             scale: 1.2,
@@ -387,11 +400,15 @@ export default class Test extends Component {
             scale: 1.2,
             transition: { duration: 0.1 },
           }} onClick={() => this.changeSection(<MenuDesserts />, "active5")} id="menu5" className={'menu-selection-item' + ' ' + this.state.active5}>DESSERTS</motion.button>
-          
+                    <motion.button whileHover={{
+            scale: 1.2,
+            transition: { duration: 0.1 },
+          }} onClick={() => this.changeSection(< MenuBrunch />, "active6")} id="menu6" className={'menu-selection-item' + ' ' + this.state.active6}>BRUNCH</motion.button>
           <motion.button whileHover={{
             scale: 1.2,
             transition: { duration: 0.1 },
-          }} onClick={() => this.changeSection(<MenuDesserts />, "active5")} id="menu5" className={'menu-selection-item' + ' ' + this.state.active5}>{' '}{' '}</motion.button>
+          }} onClick={() => this.changeSection(<MenuDesserts />, "active7")} id="menu7" className={'menu-selection-item' + ' ' + this.state.active7}>{' '}{' '}</motion.button>
+ 
         </motion.div>
 
 
