@@ -17,8 +17,19 @@ body {
     align-items: flex-end;
 }
 
-.sides {
+.sides-container-title {
     text-transform: uppercase;
+}
+.sides-list-container {
+    display: flex;
+    gap: 40px;
+    flex-direction: row;
+}
+
+.available-brunch {
+    text-align: center;
+    margin-bottom:3rem !important;
+   
 }
 
 html {
@@ -32,6 +43,19 @@ html {
 /* Optional: show position indicator in red */
 ::-webkit-scrollbar-thumb {
     background: #FF0000;
+}
+
+.sides-container {
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+}
+.less-margin {
+    margin-bottom:2rem !important;
+}
+.sides-list {
+    list-style: none;
+    padding:0;
 }
 
 .navbar-container {

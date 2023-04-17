@@ -39,7 +39,7 @@ const MapSection = ({ pageTitle, children }) => {
                     <h1 className='hours-title'>Hours of Operation</h1>
                     <p>Wednesday & Thursday: 4-10pm</p>
                     <p>Friday & Saturday: 4-11 PM</p>
-                    <p>Sunday: 4-10 PM</p>
+                    <p>Sunday: 11 AM - 10 PM</p>
                     <p>Closed Monday and Tuesday</p>
                     <div className='social-icons-bottom'>
           <a href='https://www.facebook.com/thegrillonthird' target="_BLANK">
