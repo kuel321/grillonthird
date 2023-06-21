@@ -1,13 +1,9 @@
-<p align="center">
- 
-    <img alt="Gatsby" src="https://thegrill.bulldog.rocks/admin/wp-content/uploads/2022/11/grill.png" width="60" />
- 
-</p>
+
 <h1 align="center">
  The Grill on Third
 </h1>
 
-## 🚀 Quick start
+
 
 1.  **Install Gatsby CLI**
 
