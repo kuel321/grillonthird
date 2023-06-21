@@ -1,7 +1,7 @@
 <p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg](https://thegrill.bulldog.rocks/admin/wp-content/uploads/2022/11/grill.png)" width="60" />
-  </a>
+ 
+    <img alt="Gatsby" src="https://thegrill.bulldog.rocks/admin/wp-content/uploads/2022/11/grill.png" width="60" />
+ 
 </p>
 <h1 align="center">
  The Grill on Third
@@ -47,8 +47,3 @@
 
     - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
 
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
