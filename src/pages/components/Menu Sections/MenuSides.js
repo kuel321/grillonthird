@@ -30,6 +30,10 @@ const MenuSides = ({ pageTitle, children }) => {
               side10Desc
               side11
               side11Desc
+              side12
+              side12Desc
+              side13
+              side13Desc
             }
           }
         }

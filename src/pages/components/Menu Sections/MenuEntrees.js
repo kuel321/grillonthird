@@ -33,6 +33,20 @@ const MenuEntrees = ({ pageTitle, children }) => {
           entreeItem12Desc
           entreeItem13
           entreeItem13Desc
+          entreeItem14
+          entreeItem14Desc
+          entreeItem15
+          entreeItem15Desc
+          entreeItem16
+          entreeItem16Desc
+          entreeItem17
+          entreeItem17Desc
+          entreeItem18
+          entreeItem18Desc
+          entreeItem19
+          entreeItem19Desc
+          entreeItem20
+          entreeItem20Desc
           
         }
         menuSteakToppers {
@@ -62,7 +76,8 @@ const MenuEntrees = ({ pageTitle, children }) => {
 <strong className='menu-item-title'>This will be every day we are open Wed. to Sun.</strong>
 <br></br>
 
-<p className='menu-item-subtitle'>2 select entrees at a discounted price plus a free dessert.</p>
+<p className='menu-item-subtitle'>2 select entrees at a discounted price plus a free dessert.<br></br>Chicken Parmesan (20)<br></br>Crispy Fried Chicken (20) <br></br>Beef Tips (24) <br></br>Shrimp Alfredo (22)</p>
+
 </p>
       {Object.values(data.wpPage.menuEntrees).map((value, index) => {
 
